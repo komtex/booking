@@ -1,0 +1,16 @@
+{% extends "vacation/layout.html" %}
+{% load static %}
+{% block title %}All Hotels! {% endblock %}
+{% block body %}
+<div class="container" style="margin-top: 5%">
+
+<h1>Hotels</h1>
+<ul>
+  {% for hotel in hotels %}
+    <li>
+      <a href="{% url 'hotel' hotel.id %}"> Hotel {{ hotel.id}}</a>  {{hotel.city }}, Hotel: {{ hotel.name }}, Room: {{ hotel.room }}
+      </li>
+</ul>
+{% endfor %}
+</div>
+{% endblock %}

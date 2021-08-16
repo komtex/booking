@@ -1,0 +1,108 @@
+{% extends "vacation/layout.html" %}
+{% load static %}
+
+{% block title %}Booking{% endblock %}
+
+{% block body %}
+<style>
+
+.container {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  display: block;
+  position: absolute;
+  max-width: 570px;
+}
+.but {
+  float: left;
+  position: relative;
+  bottom: -65px;
+  left: 10%;
+  transform: translateX(-50%) rotate(-10deg);
+  color: #e55643;
+  text-transform: uppercase;
+  opacity: 0;
+  visibility: visible;
+  cursor: pointer;
+  font-size: 20px;
+}
+.but span {
+  transform: skew(-10deg);
+  display: block;
+  float: left;
+  text-shadow: #533d4a 1px 1px, #533d4a 2px 2px, #533d4a 3px 3px, #533d4a 4px 4px;
+}
+h1 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 32px;
+  margin: 0;
+  line-height: 47px;
+  letter-spacing: 2px;
+}
+.title {
+  transform: translateX(-50%) rotate(-10deg);
+  display: block;
+  float: left;
+  left: 50%;
+  position: relative;
+}
+.title span {
+  transform: skew(-10deg);
+  display: block;
+  float: left;
+  text-shadow: #533d4a 1px 1px, #533d4a 2px 2px, #533d4a 3px 3px, #533d4a 4px 4px, #533d4a 5px 5px, #533d4a 6px 6px;
+  min-width: 10px;
+  min-height: 10px;
+  position: relative;
+}
+
+.title:nth-child(1) {
+  color: #e55643;
+}
+.title:nth-child(2) {
+  color: #2b9f5e;
+}
+.title:nth-child(3) {
+  color: #f1c83c;
+}
+</style>
+
+<section class="container">
+  <h1>
+    <span class="title">Find the best   deals</span>
+    <span class="title">Book without  prepayment</span>
+    <span class="title">Hotels, Appartments,  Villas </span>
+  </h1>
+  <div class="but">Search!</div>
+</section>
+
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+
+$(document).ready(function() {
+  $(".title").lettering();
+  $(".but").lettering();
+});
+$(document).ready(function() {
+  animation();
+}, 1000);
+
+$('.but').click(function() {
+  animation();
+});
+function animation() {
+  var title1 = new TimelineMax();
+  title1.to(".but", 0, {visibility: 'hidden', opacity: 0})
+  title1.staggerFromTo(".title span", 0.5,
+  {ease: Back.easeOut.config(1.7), opacity: 0, bottom: -80},
+  {ease: Back.easeOut.config(1.7), opacity: 1, bottom: 0}, 0.05);
+  title1.to(".but", 0.2, {visibility: 'visible' ,opacity: 1})
+}
+</script>
+
+{% endblock %}
